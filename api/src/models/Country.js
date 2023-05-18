@@ -4,22 +4,21 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
+    id: {
+      type: DataTypes.STRING(3),
+      allowNull: false,
+      primaryKey: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    id: {
-      type: DataTypes.STRING(3), // para que el id sean string de 3 letras
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
     },
     imgBandera: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     continente: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     capital: {
@@ -31,7 +30,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     área: {
-      type: DataTypes.INTEGER, //datos numéricos
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     población: {
@@ -39,7 +38,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   }, {
-    timestamps: false, //desactiva agregat datos de fecha y hora a la tabla
-    freezeTableName: true, // desactiva el plural del nombramiento
-  });
+    timestamps: false,
+    freezeTableName: true,
+  }
+  );
 };

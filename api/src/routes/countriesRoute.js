@@ -28,9 +28,9 @@ router.get('/', async(req, res) => {
 })
 
 router.get('/:id', async(req, res) => {
-    const id = req.query.id;
+    const id = req.params.id;
     let todosLosPaises = await information();
-    
+    console.log(id);
     if(id) {
         let idPaises = await todosLosPaises.filter(pais => pais.id.toLowerCase() === id.toLowerCase())
         idPaises.length?
